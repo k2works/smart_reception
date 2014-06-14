@@ -90,6 +90,13 @@ group :development,:test do
   end
 end
 ```
+### データベース設定
+_config/db.yml_
+```yml
+development: "sqlite://db/development.sqlite3"
+test: "sqlite://db/test.sqlite3"
+production: "postgres://k2works@localhost/keenio_rakuten_api_production"
+```
 
 ### Keen対応
 _views/layout.erb_
