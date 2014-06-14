@@ -1,14 +1,15 @@
 
-スマート受付
+SWF2014
 ===
 # 目的
-スマート受付プロジェクトランディングページ
+[StartupWeekend](http://fukuoka.startupweekend.org/)発表用ランディングページ
 
 # 前提
 | ソフトウェア     | バージョン    | 備考         |
 |:---------------|:-------------|:------------|
 | OS X           |10.8.5        |             |
 | ruby      　　　|2.1.1         |             |
+| sinatra   　　　|1.4.5         |             |
 
 # 構成
 + [セットアップ](#1)
@@ -17,6 +18,7 @@
 + [イベント送信](#4)
 + [データ分析と視覚化](#5)
 + [Herokuにアップする](#6)
++ [GoogleAnalytics対応](#7)
 
 # 詳細
 ## <a name="1">セットアップ</a>
@@ -155,8 +157,23 @@ $ heroku create
 $ heroku addons:add keen
 $ heroku config:push
 $ git push heroku master
-$ heroku apps:rename rakuten-ranking
+$ heroku apps:rename swf2014
 ```
+
+## <a name="7">GoogleAnalytics対応</a>
+_views/layout.erb_
+```ruby
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '<%= ENV['GA_TRACKING_ID'] %>', 'swf2014.herokuapp.com');
+  ga('send', 'pageview');
+</script>
+```
+_.env_にトラッキングコード追加
 
 # 参照
 + [Keen IO](https://keen.io/)
