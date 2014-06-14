@@ -18,3 +18,9 @@ namespace :db do
   end
 end
 
+namespace :app do |t|
+  desc "Rakeタスク"
+  task :something_rake do
+    require "./config/initializers/application"
+  end
+end

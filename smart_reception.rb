@@ -5,4 +5,12 @@ class SmartReception < Sinatra::Base
   get "/" do
     erb :welcome
   end
+
+  get "/index" do
+    erb :index
+  end
+
+  get "/index2" do
+    erb :index2
+  end
 end
