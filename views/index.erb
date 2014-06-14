@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="intro-message">
-                    <h1>Landing Page</h1>
-                    <h3>A Template by Start Bootstrap</h3>
+                    <h1><%= @main_copy %></h1>
+                    <h3>子供とお年寄りの心と健康</h3>
                     <hr class="intro-divider">
                 </div>
             </div>
@@ -30,7 +30,9 @@
                 <p class="lead">A special thanks to Death to the Stock Photo for providing the photographs that you see in this template. <a target="_blank" href="http://join.deathtothestockphoto.com/">Visit their website</a> to become a member.</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive" src="images/ipad.png" alt="">
+              <img class="img-responsive">
+                <a href="https://www.flickr.com/photos/60312252@N00/637535610" title="老城.老人.老鴿. by pigheadskin, on Flickr"><img src="https://farm2.staticflickr.com/1065/637535610_96f2c38fd2.jpg" width="400" height="300" alt="老城.老人.老鴿."></a>
+              </img>
             </div>
         </div>
 
@@ -53,7 +55,9 @@
                 <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by PSDCovers! <a target="_blank" href="http://www.psdcovers.com/">Visit their website</a> to download some of their awesome, free photoshop actions!</p>
             </div>
             <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                <img class="img-responsive" src="images/doge.png" alt="">
+              <img class="img-responsive">
+                <a href="https://www.flickr.com/photos/kiuko/3545655306" title="Little player by きうこ, on Flickr"><img src="https://farm4.staticflickr.com/3379/3545655306_72dc4918bb.jpg" width="500" height="375" alt="Little player"></a>
+              </img>
             </div>
         </div>
 
@@ -76,7 +80,9 @@
                 <p class="lead">This template features the 'Lato' font, part of the <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive" src="images/phones.png" alt="">
+                <img class="img-responsive">
+                <a href="https://www.flickr.com/photos/iandeth/2175636060" title="笑顔 by Toshimasa Ishibashi, on Flickr"><img src="https://farm3.staticflickr.com/2213/2175636060_458cd125c0.jpg" width="333" height="500" alt="笑顔"></a>
+              </img>
             </div>
         </div>
 
@@ -96,9 +102,9 @@
             </div>
             <div class="col-lg-6">
                 <ul class="list-inline banner-social-buttons">
-                    <li><a href="/ok" class="btn btn-default btn-lg"> <span class="network-name">(・∀・)ｲｲﾈ!!</span></a>
+                    <li><a href="/ok" class="btn btn-default btn-lg"><i class='fa fa-thumbs-up'></i><span class='label label-success'><%= @ok_count %></span></a>
                     </li>
-                    <li><a href="/ng" class="btn btn-default btn-lg"> <span class="network-name">(・A・)ｲｸﾅｲ!!</span></a>
+                    <li><a href="/ng" class="btn btn-default btn-lg"><i class='fa fa-thumbs-down'></i><span class='label label-danger'><%= @ng_count %></span></a>
                     </li>
                 </ul>
             </div>

@@ -132,58 +132,15 @@ $ foreman run rake app:something_rake
 ## <a name="5">データ分析と視覚化</a>
 ### 表示用JavaScript追加
 _public/javascripts/keenio.js_
-### アプリケーション修正
-_keenio_rakuten_api.rb_
-```ruby
-get "/" do
-  keen_filters = [property_name:'code',operator:'ne',property_value:'healthy-company:10000108']
-  @ranks = Keen.extraction("item_rank",filters:keen_filters,latest:'20')
-  erb :welcome
-end
-```
+
 ### ビュー修正
 _views/layout.erb_
 ```ruby
 <script src="javascripts/keenio.js"></script>
 ```
-_views/welcome.erb_
+_views/index.erb_
 
 ## <a name="6">Herokuにアップする</a>
-### Gemfile編集
-_Gemfile_
-```ruby
-source "https://rubygems.org/"
-ruby "2.1.1"
-
-# App Stack
-gem "sinatra", "~> 1.4"
-gem "sequel"
-gem "pg"
-gem "rakuten_web_service"
-gem "keen"
-
-group :development,:test do
-  gem "sqlite3"
-  gem "rake", "~> 10.0"
-  gem "minitest", "~> 5.2"
-  gem "rack-test", "~> 0.6"
-  gem 'guard'
-  gem 'guard-livereload'
-  gem 'rack-livereload'
-  gem 'pry'
-  gem 'pry-doc'
-  gem 'pry-stack_explorer'
-
-  if RUBY_VERSION >= '2.0.0'
-    gem 'pry-byebug'
-  else
-    # 以下はRuby1.9の時のみ使う(pry-byebugの代わりに)
-    # debuggerは1.9以下でしか動作しない, remote は byebug で使えないようになった
-    gem 'pry-debugger'
-    gem 'pry-remote'
-  end
-end
-```
 ### デプロイ
 ```bash
 $ heroku login
@@ -193,31 +150,6 @@ $ heroku config:push
 $ git push heroku master
 $ heroku apps:rename rakuten-ranking
 ```
-### Rakeタスク実行
-```bash
-$ heroku run rake keyword='クエン酸' shopcode='healthy-company' app:get_rank
-```
-
-### スケジューラに登録する
-```bash
-$ heroku addons:add scheduler:standard
-Adding scheduler:standard on rakuten-ranking... done, v9 (free)
-This add-on consumes dyno hours, which could impact your monthly bill. To learn more:
-http://devcenter.heroku.com/addons_with_dyno_hour_usage
-To manage scheduled jobs run:
-heroku addons:open scheduler
-Use `heroku addons:docs scheduler` to view documentation.
-$ heroku addons:open scheduler
-```
-スケジューラ画面で以下のrakeタスクを追加する（実行はDaily)
-```bash
-run rake keyword='クエン酸' shopcode='healthy-company' app:get_rank
-```
-![](https://farm6.staticflickr.com/5112/14203038649_bdf3ba11af.jpg)
-
-###　集計状況を日々確認する
-http://rakuten-ranking.herokuapp.com/ にアクセスして集計が実行されているかを確認する。
-![](https://farm3.staticflickr.com/2905/14366576336_2b7266d976.jpg)
 
 # 参照
 + [Keen IO](https://keen.io/)
