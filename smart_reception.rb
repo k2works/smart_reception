@@ -59,6 +59,15 @@ class SmartReception < Sinatra::Base
 
     @section_heading_03 = <<-'MSG'
     <h2 class="section-heading">
+    特別なサービス
+        <br>年表</h2>
+    <p class="lead">
+    あなたの生きた証を作成します。
+    </p>
+    MSG
+
+    @section_heading_04 = <<-'MSG'
+    <h2 class="section-heading">
     サービスの価格
         <br></h2>
     <p class="lead">
